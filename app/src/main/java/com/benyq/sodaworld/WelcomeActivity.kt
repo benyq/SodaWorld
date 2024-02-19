@@ -18,9 +18,9 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        isAppearanceLightStatusBars(true)
+        isAppearanceLightStatusBars(false)
         splashScreen.setKeepOnScreenCondition { true }
-        startActivity(Intent(this, MusicActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

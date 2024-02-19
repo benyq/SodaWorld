@@ -37,7 +37,7 @@ object NotificationHelper {
         }
 
         val notification: Notification = NotificationCompat.Builder(appCtx, KEEP_ALIVE_CHANNEL_ID)
-            .setSmallIcon(R.mipmap.ic_launcher) // the status icon
+            .setSmallIcon(R.drawable.ic_launcher) // the status icon
             .setWhen(System.currentTimeMillis()) // the time stamp
             .setContentText("I'm still alive!")
             .setPriority(NotificationCompat.PRIORITY_MAX)
