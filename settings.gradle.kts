@@ -18,3 +18,4 @@ rootProject.name = "SodaWorld"
 include(":app")
 include(":common:base")
 include(":common:database")
+include(":modules:music")

@@ -47,6 +47,7 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
         }
         onActivityCreated(savedInstanceState)
         observe()
+        initData()
     }
 
     abstract fun getLayoutId(): Int
@@ -54,6 +55,7 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
     abstract fun onActivityCreated(savedInstanceState: Bundle?)
 
     abstract fun observe()
+    abstract fun initData()
 
     open fun onApplyWindow(view: View, windowInsets: WindowInsetsCompat) {
         val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())

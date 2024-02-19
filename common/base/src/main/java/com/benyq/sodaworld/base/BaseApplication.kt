@@ -40,7 +40,7 @@ open class BaseApplication: Application() {
             val info = pm.getApplicationInfo(packageName, GET_META_DATA)
             if (info.metaData != null) {
                 for (key in info.metaData.keySet()) {
-                    val value = info.metaData[key]
+                    val value = info.metaData.getString(key)
                     if (MODULE_META_KEY == value) {
                         val delegate: ApplicationDelegate = initApplicationDelegate(key)
                         delegates.add(delegate)
@@ -74,6 +74,6 @@ open class BaseApplication: Application() {
 }
 
 interface ApplicationDelegate {
-    fun attachBaseContext(application: Application?, context: Context?)
-    fun onCreate(application: Application?)
+    fun attachBaseContext(application: Application, context: Context?)
+    fun onCreate(application: Application)
 }

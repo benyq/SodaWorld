@@ -1,5 +1,6 @@
 package com.benyq.sodaworld
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.MarginLayoutParams
@@ -9,15 +10,23 @@ import com.benyq.sodaworld.base.extensions.dp
 import com.benyq.sodaworld.base.extensions.fitsSystemWindows
 import com.benyq.sodaworld.base.ui.BaseActivity
 import com.benyq.sodaworld.databinding.ActivityMainBinding
+import com.benyq.sodaworld.music.MusicActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutId() = R.layout.activity_main
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         window.fitsSystemWindows()
+
+        startActivity(Intent(this, MusicActivity::class.java))
+        finish()
     }
 
     override fun observe() {
+
+    }
+
+    override fun initData() {
 
     }
 

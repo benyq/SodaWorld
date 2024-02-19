@@ -40,6 +40,10 @@ android {
 }
 
 dependencies {
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
     implementation(project(":common:base"))
     implementation(project(":common:database"))
+
+    implementation(project(":modules:music"))
 }

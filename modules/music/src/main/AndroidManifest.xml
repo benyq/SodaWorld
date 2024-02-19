@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
+
+    <application
+        >
+        <!--value参数是在BaseApplication中固定的值,value是实现类的路径-->
+        <meta-data
+            android:name="com.benyq.sodaworld.music.MusicApplicationDelegate"
+            android:value="ApplicationDelegate" />
+
+        <activity android:name=".MusicActivity"
+            android:exported="false"/>
+
+        <service
+            android:name=".play.service.SodaMusicService"
+            android:foregroundServiceType="mediaPlayback"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".play.service.SodaMusicReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="soda_world.benyq.close" />
+                <action android:name="soda_world.benyq.pause" />
+                <action android:name="soda_world.benyq.next" />
+                <action android:name="soda_world.benyq.play" />
+                <action android:name="soda_world.benyq.previous" />
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

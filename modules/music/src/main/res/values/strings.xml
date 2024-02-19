@@ -1,0 +1,4 @@
+<resources>
+    <string name="play">播放</string>
+    <string name="notify_of_play">播放时的通知栏展示</string>
+</resources>

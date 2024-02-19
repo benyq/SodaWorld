@@ -72,5 +72,5 @@ dependencies {
     api("com.github.getActivity:XXPermissions:18.3")
     //https://github.com/bytedance/CodeLocator
     implementation("com.bytedance.tools.codelocator:codelocator-core:2.0.3")
-    api("io.coil-kt:coil:2.5.0")
+    api("com.github.bumptech.glide:glide:4.16.0")
 }

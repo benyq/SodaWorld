@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.benyq.sodoworld.database"
+    namespace = "com.benyq.sodaworld.database"
     compileSdk = rootProject.ext["compileSdkVersion"] as Int
 
     defaultConfig {
