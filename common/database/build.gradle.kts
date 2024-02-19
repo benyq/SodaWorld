@@ -1,21 +1,18 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.benyq.sodaworld"
+    namespace = "com.benyq.sodoworld.database"
     compileSdk = rootProject.ext["compileSdkVersion"] as Int
 
     defaultConfig {
-        applicationId = "com.benyq.sodaworld"
         minSdk = rootProject.ext["minSdkVersion"] as Int
-        targetSdk = rootProject.ext["targetSdkVersion"] as Int
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -34,12 +31,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    dataBinding{
-        enable = true
-    }
 }
 
 dependencies {
-    implementation(project(":common:base"))
-    implementation(project(":common:database"))
+    compileOnly(project(":common:base"))
+
+    val roomVersion = "2.5.2"
+    api("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 }
