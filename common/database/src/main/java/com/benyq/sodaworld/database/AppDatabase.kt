@@ -5,7 +5,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.benyq.sodaworld.base.extensions.appCtx
 import com.benyq.sodaworld.database.dao.QuickLaunchAppDao
+import com.benyq.sodaworld.database.dao.TransactionRecordDao
 import com.benyq.sodaworld.database.entity.QuickLaunchEntity
+import com.benyq.sodaworld.database.entity.TransactionRecord
 
 /**
  *
@@ -14,9 +16,10 @@ import com.benyq.sodaworld.database.entity.QuickLaunchEntity
  *
  */
 
-@Database(entities = [QuickLaunchEntity::class], version = 1)
+@Database(entities = [QuickLaunchEntity::class, TransactionRecord::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun quickLaunchAppDao(): QuickLaunchAppDao
+    abstract fun transactionRecordDao(): TransactionRecordDao
 }
 
 

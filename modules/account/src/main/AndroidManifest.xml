@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name=".ui.TransactionActivity"
+            android:theme="@style/account_Theme"
+            android:launchMode="singleTop"
+            android:exported="false" >
+            <nav-graph android:value="@navigation/account_nav_transaction" />
+        </activity>
+
+        <meta-data
+            android:name="com.benyq.sodaworld.account.AccountApplicationDelegate"
+            android:value="ApplicationDelegate" />
+    </application>
+
+</manifest>

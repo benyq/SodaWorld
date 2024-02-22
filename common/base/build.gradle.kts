@@ -73,4 +73,12 @@ dependencies {
     //https://github.com/bytedance/CodeLocator
     implementation("com.bytedance.tools.codelocator:codelocator-core:2.0.3")
     api("com.github.bumptech.glide:glide:4.16.0")
+    api("io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.4")
+
+    //navigation
+    api("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    api("androidx.navigation:navigation-ui-ktx:2.7.5")
+
+    //https://github.com/LuckyCodeer/Android-PickerView
+    api("com.github.LuckyCodeer.Android-PickerView:pickerview:4.2.5")
 }

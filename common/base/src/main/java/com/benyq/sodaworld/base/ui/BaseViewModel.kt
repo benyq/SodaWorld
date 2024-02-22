@@ -1,8 +1,11 @@
 package com.benyq.sodaworld.base.ui
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.benyq.sodaworld.base.R
 import com.benyq.sodaworld.base.coroutine.Coroutine
+import com.benyq.sodaworld.base.extensions.appCtx
 import com.benyq.sodaworld.base.network.SodaResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -33,7 +36,7 @@ open class BaseViewModel() : ViewModel() {
         context: CoroutineContext = Dispatchers.IO,
         start: CoroutineStart = CoroutineStart.DEFAULT,
         executeContext: CoroutineContext = Dispatchers.Main,
-        block: suspend CoroutineScope.() -> T
+        block: suspend CoroutineScope.() -> T,
     ): Coroutine<T> {
         return Coroutine.async(scope, context, start, executeContext, block)
     }
@@ -41,49 +44,43 @@ open class BaseViewModel() : ViewModel() {
     protected fun <R> submit(
         scope: CoroutineScope = viewModelScope,
         context: CoroutineContext = Dispatchers.IO,
-        block: suspend CoroutineScope.() -> Deferred<R>
+        block: suspend CoroutineScope.() -> Deferred<R>,
     ): Coroutine<R> {
         return Coroutine.async(scope, context) { block().await() }
     }
 
-    protected fun executeParallel() {
-        execute {
-            listOf(
-                async { delayMock(1) },
-                async { delayMock(1) },
-                async { delayMock1(1) },
-                async { delayMock(1) },
-                async { delayMock(1) }
-            ).awaitAll()
-        }.onSuccess {
 
-        }
-    }
-
-    suspend fun delayMock(num: Int): Int {
-        delay(num * 1000L)
-        return num
-    }
-
-    suspend fun delayMock1(num: Int): String {
-        delay(num * 1000L)
-        return num.toString()
-    }
-
-    protected fun <T> flowResponse(defaultValue: T? = null, request: suspend () -> SodaResponse<T>): Flow<DataState<T>> {
+    protected fun <T> flowResponse(
+        defaultValue: T? = null,
+        request: suspend () -> SodaResponse<T>,
+    ): Flow<DataState<T>> {
         return flow {
             val response = request()
-            if (response.isSuccess() || defaultValue != null){
+            if (response.isSuccess() || defaultValue != null) {
                 emit(DataState.Success<T>(response.getRealData() ?: defaultValue!!))
-            }else {
+            } else {
                 emit(DataState.Error<T>(response.getMessage()))
             }
         }.flowOn(Dispatchers.IO)
             .onStart { emit(DataState.Loading(true)) }
-            .catch { DataState.Error<T>(it.message ?: "网络错误") }
+            .catch { DataState.Error<T>(it.message ?: getString(R.string.error_unknown)) }
             .onCompletion {
                 emit(DataState.Loading(false))
             }
     }
 
+    protected fun <T> executeFlow(request: suspend () -> T): Flow<DataState<T>> {
+        return flow {
+            emit(DataState.Loading<T>(true))
+            val response = request()
+            emit(DataState.Success(response))
+        }.catch { DataState.Error<T>(it.message ?: getString(R.string.error_unknown)) }
+            .onCompletion {
+                emit(DataState.Loading(false))
+            }
+    }
+
+    fun getString(@StringRes resId: Int): String {
+        return appCtx.getString(resId)
+    }
 }

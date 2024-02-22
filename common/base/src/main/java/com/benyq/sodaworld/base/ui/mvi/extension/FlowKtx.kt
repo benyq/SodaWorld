@@ -68,6 +68,21 @@ class StateCollector<T : UiState>(
 
 }
 
+fun <T> Flow<T>.collectOnLifecycle(
+    lifecycleOwner: LifecycleOwner,
+    state: Lifecycle.State = Lifecycle.State.CREATED,
+    action: (T) -> Unit
+) {
+    lifecycleOwner.lifecycleScope.launch {
+        lifecycleOwner.repeatOnLifecycle(state) {
+            collect {
+                action(it)
+            }
+        }
+    }
+}
+
+
 internal fun <T : UiState, A> Flow<T>.collectPartial(
     lifecycleOwner: LifecycleOwner,
     prop1: KProperty1<T, A>,

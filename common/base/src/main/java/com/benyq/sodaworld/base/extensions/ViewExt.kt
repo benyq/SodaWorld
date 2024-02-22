@@ -4,11 +4,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.debounce
 import java.util.concurrent.TimeUnit
 
 /**
@@ -40,7 +40,7 @@ fun View.visibleOrInvisible(visible: Boolean) {
 fun View.throttleClick(
     interval: Long = 500,
     unit: TimeUnit = TimeUnit.MILLISECONDS,
-    block: View.() -> Unit
+    block: View.() -> Unit,
 ) {
     setOnClickListener(ThrottleClickListener(interval, unit, block))
 }
@@ -48,7 +48,7 @@ fun View.throttleClick(
 class ThrottleClickListener(
     private val interval: Long = 500,
     private val unit: TimeUnit = TimeUnit.MILLISECONDS,
-    private var block: View.() -> Unit
+    private var block: View.() -> Unit,
 ) : View.OnClickListener {
     private var lastTime: Long = 0
 
@@ -92,7 +92,7 @@ fun ViewPager2.reduceDragSensitivity(f: Int = 4) {
         val touchSlopField = RecyclerView::class.java.getDeclaredField("mTouchSlop")
         touchSlopField.isAccessible = true
         val touchSlop = touchSlopField.get(recyclerView) as Int
-        touchSlopField.set(recyclerView, touchSlop*f)       // "8" was obtained experimentally
+        touchSlopField.set(recyclerView, touchSlop * f)       // "8" was obtained experimentally
     }
 }
 
@@ -113,10 +113,11 @@ fun View.clickFlow() = callbackFlow {
  * 可以实现搜索框在一定时间内，不会每一个字符输入都查询的功能
  */
 fun EditText.textFlow() = callbackFlow {
-    val watcher = object: TextWatcher {
+    val watcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
         }
+
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             s?.toString()?.let { trySend(it) }
         }
@@ -126,4 +127,16 @@ fun EditText.textFlow() = callbackFlow {
     }
     addTextChangedListener(watcher)
     awaitClose { removeTextChangedListener(watcher) }
+}
+
+fun EditText.textTrim(): String {
+    return text.toString().trim()
+}
+
+fun RecyclerView.linear(
+    @RecyclerView.Orientation orientation: Int = RecyclerView.VERTICAL,
+    reverseLayout: Boolean = false,
+): RecyclerView {
+    layoutManager = LinearLayoutManager(context, orientation, reverseLayout)
+    return this
 }

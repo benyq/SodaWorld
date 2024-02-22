@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item"
+        android:paddingHorizontal="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.benyq.sodaworld.account.ui.widget.ConsumeView
+            android:id="@+id/consumeView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvConsumeType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/consumeView"
+            app:layout_constraintStart_toEndOf="@id/consumeView"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
+            tools:text="外卖" />
+
+
+        <TextView
+            android:id="@+id/tvPayAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/color_pay_amount"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/tvPayUnit"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
+            tools:text="11.56" />
+
+        <TextView
+            android:id="@+id/tvPayUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/color_pay_amount"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
+            android:text="元" />
+
+        <TextView
+            android:id="@+id/tvPaidType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/color_2E2E2E"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/consumeView"
+            tools:text="现金" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_grey"
+            app:layout_constraintStart_toEndOf="@id/consumeView"
+            app:layout_constraintTop_toBottomOf="@id/tvPaidType"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

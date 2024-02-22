@@ -18,3 +18,19 @@ fun String.isJson(): Boolean {
         false
     }
 }
+
+fun <T> String.toNumberDefault(default: T) : T {
+    return try {
+        val res: Any = when (default) {
+            is Long -> toLong()
+            is Int -> toInt()
+            is Float -> toFloat()
+            is Double -> toDouble()
+            is Short -> toShort()
+            else ->  throw NumberFormatException("未找到该类型")
+        }
+        res as T
+    }catch (e: NumberFormatException) {
+        default
+    }
+}

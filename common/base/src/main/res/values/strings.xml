@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SodaWorld</string>
+    <string name="error_unknown">未知错误</string>
+    <string name="error_network">网络错误</string>
 </resources>

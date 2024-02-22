@@ -38,11 +38,14 @@ abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes layoutId: Int) : Fr
         }
         onFragmentCreated(savedInstanceState)
         observe()
+        initData()
     }
 
     abstract fun onFragmentCreated(savedInstanceState: Bundle?)
 
     abstract fun observe()
+
+    open fun initData(){}
 
     open fun onApplyWindow(view: View, windowInsets: WindowInsetsCompat){
         val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())

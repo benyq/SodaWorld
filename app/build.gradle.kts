@@ -46,4 +46,5 @@ dependencies {
     implementation(project(":common:database"))
 
     implementation(project(":modules:music"))
+    implementation(project(":modules:account"))
 }

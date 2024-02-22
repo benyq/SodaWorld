@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_transaction"
+    app:startDestination="@id/transactionFragment">
+
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.benyq.sodaworld.account.ui.record.TransactionRecordFragment"
+        android:label="TransactionFragment"
+        tools:layout="@layout/account_fragment_transaction_record" >
+
+        <action android:id="@+id/recordToDetail"
+            app:destination="@id/transactionDetailFragment"
+            app:enterAnim="@anim/account_x_fragment_enter"
+            app:exitAnim="@anim/account_x_fragment_exit"
+            app:popEnterAnim="@anim/account_x_fragment_pop_enter"
+            app:popExitAnim="@anim/account_x_fragment_pop_exit" />
+
+        <action android:id="@+id/recordToEdit"
+            app:destination="@id/transactionAddRecordFragment"
+            app:enterAnim="@anim/account_slide_in_bottom"
+            app:exitAnim="@anim/account_anim_normal"
+            app:popEnterAnim="@anim/account_anim_normal" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.benyq.sodaworld.account.ui.detail.TransactionRecordDetailFragment"
+        android:label="TransactionDetailFragment"
+        tools:layout="@layout/account_fragment_transaction_record_detail" >
+
+        <action android:id="@+id/detailToEdit"
+            app:destination="@id/transactionAddRecordFragment"
+            app:enterAnim="@anim/account_x_fragment_enter"
+            app:exitAnim="@anim/account_x_fragment_exit"
+            app:popEnterAnim="@anim/account_x_fragment_pop_enter"
+            app:popExitAnim="@anim/account_x_fragment_pop_exit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionAddRecordFragment"
+        android:name="com.benyq.sodaworld.account.ui.add.TransactionAddRecordFragment"
+        android:label="TransactionDetailListFragment"
+        tools:layout="@layout/account_fragment_transaction_add_record" >
+
+        <deepLink app:uri="www.benyq.account.com"
+            app:action="android.intent.action.addRecord"/>
+
+    </fragment>
+
+</navigation>

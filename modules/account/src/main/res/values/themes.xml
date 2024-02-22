@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="account_Theme" parent="Base.Theme.SodaWorld" >
+        <item name="android:windowBackground">@color/blue_500</item>
+        <item name="android:statusBarColor">@color/blue_500</item>
+    </style>
+</resources>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup.MarginLayoutParams
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import com.benyq.sodaworld.account.ui.TransactionActivity
 import com.benyq.sodaworld.base.extensions.dp
 import com.benyq.sodaworld.base.extensions.fitsSystemWindows
 import com.benyq.sodaworld.base.ui.BaseActivity
@@ -18,7 +19,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         window.fitsSystemWindows()
 
-        startActivity(Intent(this, MusicActivity::class.java))
+        startActivity(Intent(this, TransactionActivity::class.java))
         finish()
     }
 
