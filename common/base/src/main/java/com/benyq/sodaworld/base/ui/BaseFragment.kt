@@ -50,7 +50,7 @@ abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes layoutId: Int) : Fr
     open fun onApplyWindow(view: View, windowInsets: WindowInsetsCompat){
         val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
         view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            topMargin += insets.top
+            topMargin = insets.top
         }
     }
 }

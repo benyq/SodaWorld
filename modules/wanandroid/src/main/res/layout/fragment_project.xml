@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_background">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/project_page"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/purple_700"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</layout>

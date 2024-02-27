@@ -11,9 +11,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -30,6 +27,8 @@ import kotlin.coroutines.CoroutineContext
  */
 
 open class BaseViewModel() : ViewModel() {
+
+    protected val TAG = this::class.java.simpleName
 
     protected fun <T> execute(
         scope: CoroutineScope = viewModelScope,

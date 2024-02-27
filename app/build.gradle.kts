@@ -47,4 +47,5 @@ dependencies {
 
     implementation(project(":modules:music"))
     implementation(project(":modules:account"))
+    implementation(project(":modules:wanandroid"))
 }

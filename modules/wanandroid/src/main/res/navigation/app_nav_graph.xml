@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav_graph.xml"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.home.HomeFragment"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_home_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit" />
+
+        <action
+            android:id="@+id/action_home_to_search"
+            app:destination="@id/search_fragment"
+            app:enterAnim="@anim/search_fragment_enter"
+            app:exitAnim="@anim/search_fragment_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/project_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.project.ProjectTreeFragment"
+        tools:layout="@layout/fragment_project" >
+        <action
+            android:id="@+id/action_project_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/category_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.category.CategoryFragment"
+        tools:layout="@layout/fragment_category" >
+
+        <action
+            android:id="@+id/action_category_to_articles"
+            app:destination="@id/category_articles_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/mine_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.mine.MineFragment"
+        tools:layout="@layout/fragment_mine" >
+        <action
+            android:id="@+id/action_mine_to_login"
+            app:destination="@id/login_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_mine_to_user_collect"
+            app:destination="@id/user_collect_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+        <action
+            android:id="@+id/action_mine_to_language"
+            app:destination="@id/language_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/article_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.article.ArticleFragment"
+        tools:layout="@layout/fragment_article" />
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.login.LoginFragment"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment android:id="@+id/project_articles_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.project.articles.ProjectArticlesFragment"
+        tools:layout="@layout/fragment_article_list" >
+        <action
+            android:id="@+id/action_project_articles_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+
+        <argument
+            android:name="cid"
+            app:argType="integer"/>
+        <argument
+            android:name="title"
+            app:argType="string"/>
+    </fragment>
+
+    <fragment android:id="@+id/user_collect_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.mine.collect.UserCollectFragment"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_user_collect_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+    </fragment>
+
+    <fragment android:id="@+id/category_articles_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.category.articles.CategoryArticlesFragment"
+        tools:layout="@layout/fragment_list" >
+
+        <action
+            android:id="@+id/action_category_articles_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+
+        <argument
+            android:name="cid"
+            app:argType="integer"/>
+        <argument
+            android:name="title"
+            app:argType="string"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/search_fragment"
+        android:name="com.benyq.wanandroid.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search" >
+
+        <action
+            android:id="@+id/action_search_to_article"
+            app:destination="@id/article_fragment"
+            app:enterAnim="@anim/x_fragment_enter"
+            app:exitAnim="@anim/x_fragment_exit"
+            app:popEnterAnim="@anim/x_fragment_pop_enter"
+            app:popExitAnim="@anim/x_fragment_pop_exit"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/language_fragment"
+        android:name="com.benyq.sodaworld.wanandroid.mine.language.LanguageFragment"
+        tools:layout="@layout/fragment_language" />
+
+</navigation>

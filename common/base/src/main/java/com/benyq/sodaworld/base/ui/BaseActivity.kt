@@ -43,7 +43,6 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
         })
         ViewCompat.setOnApplyWindowInsetsListener(dataBind.root) { view, windowInsets ->
             onApplyWindow(view, windowInsets)
-            WindowInsetsCompat.CONSUMED
         }
         onActivityCreated(savedInstanceState)
         observe()
@@ -57,9 +56,10 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
     open fun observe() {}
     open fun initData() {}
 
-    open fun onApplyWindow(view: View, windowInsets: WindowInsetsCompat) {
+    open fun onApplyWindow(view: View, windowInsets: WindowInsetsCompat): WindowInsetsCompat {
         val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
         view.setPadding(0, insets.top, 0, 0)
+        return WindowInsetsCompat.CONSUMED
     }
 
     /**

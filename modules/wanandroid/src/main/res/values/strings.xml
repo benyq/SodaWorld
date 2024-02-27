@@ -1,0 +1,20 @@
+<resources>
+    <string name="home_page">首页</string>
+    <string name="category_page">分类</string>
+    <string name="project_page">项目</string>
+    <string name="mine_page">我的</string>
+    <string name="login">登录</string>
+    <string name="logout">退出登录</string>
+    <string name="search_hint">搜索关键词以空格形式隔开</string>
+    <string name="search_history">搜索历史</string>
+    <string name="search_hotkey">热门搜索</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="save">保存</string>
+    <string name="language">语言</string>
+    <string name="collect">收藏</string>
+    <string name="coin">积分</string>
+    <string name="rank">等级</string>
+    <string name="language_not_selected">请选择一个语言</string>
+    <string name="language_change_confirm">是否确认修改APP语言？</string>
+</resources>
