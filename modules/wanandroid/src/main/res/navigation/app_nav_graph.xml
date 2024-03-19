@@ -146,7 +146,7 @@
     </fragment>
 
     <fragment android:id="@+id/search_fragment"
-        android:name="com.benyq.wanandroid.ui.search.SearchFragment"
+        android:name="com.benyq.sodaworld.wanandroid.search.SearchFragment"
         tools:layout="@layout/fragment_search" >
 
         <action

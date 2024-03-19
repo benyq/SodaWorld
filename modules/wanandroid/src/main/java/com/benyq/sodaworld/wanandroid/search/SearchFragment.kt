@@ -1,4 +1,4 @@
-package com.benyq.wanandroid.ui.search
+package com.benyq.sodaworld.wanandroid.search
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -17,8 +17,6 @@ import com.benyq.sodaworld.base.ui.DataState
 import com.benyq.sodaworld.base.ui.mvi.extension.collectOnLifecycle
 import com.benyq.sodaworld.wanandroid.R
 import com.benyq.sodaworld.wanandroid.databinding.FragmentSearchBinding
-import com.benyq.sodaworld.wanandroid.search.SearchEvent
-import com.benyq.sodaworld.wanandroid.search.SearchViewModel
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.loadState.LoadState
 import com.chad.library.adapter4.loadState.trailing.TrailingLoadStateAdapter
