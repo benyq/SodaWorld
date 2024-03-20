@@ -16,6 +16,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters.addAll(listOf("armeabi-v7a", "x86", "arm64-v8a", "x86_64"))
+        }
     }
 
     buildTypes {
@@ -26,11 +30,15 @@ android {
                 "proguard-rules.pro"
             )
         }
+        create("profile") {
+            initWith(getByName("debug"))
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -48,4 +56,7 @@ dependencies {
     implementation(project(":modules:music"))
     implementation(project(":modules:account"))
     implementation(project(":modules:wanandroid"))
+    debugImplementation("com.benyq.flutter_wanandroid:flutter_debug:1.0")
+    add("profileImplementation", "com.benyq.flutter_wanandroid:flutter_profile:1.0")
+    releaseImplementation("com.benyq.flutter_wanandroid:flutter_release:1.0")
 }

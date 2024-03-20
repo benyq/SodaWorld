@@ -10,9 +10,17 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { setUrl("https://jitpack.io") }
+        maven { url "https://jitpack.io" }
+        maven {
+            url 'modules\\flutter_wanandroid\\build\\host\\outputs\\repo'
+        }
+        maven {
+            String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+            url "$storageUrl/download.flutter.io"
+        }
     }
 }
+
 
 rootProject.name = "SodaWorld"
 include(":app")
@@ -22,3 +30,4 @@ include(":common:wanandroid_api")
 include(":modules:music")
 include(":modules:account")
 include(":modules:wanandroid")
+

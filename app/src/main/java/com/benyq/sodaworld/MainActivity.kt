@@ -1,13 +1,11 @@
 package com.benyq.sodaworld
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.WindowInsetsCompat
 import com.benyq.sodaworld.base.extensions.fitsSystemWindows
 import com.benyq.sodaworld.base.ui.BaseActivity
 import com.benyq.sodaworld.databinding.ActivityMainBinding
-import com.benyq.sodaworld.wanandroid.WanAndroidActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutId() = R.layout.activity_wan_android
@@ -15,7 +13,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         window.fitsSystemWindows()
 
-        startActivity(Intent(this, WanAndroidActivity::class.java))
+        FlutterWanAndroidActivity.startWithCachedEngine(this)
         finish()
     }
 
