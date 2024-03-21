@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    compileOnly(project(":common:base"))
+    implementation(project(":common:base"))
 
     val roomVersion = "2.5.2"
     api("androidx.room:room-runtime:$roomVersion")

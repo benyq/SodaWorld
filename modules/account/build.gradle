@@ -36,5 +36,5 @@ android {
 
 dependencies {
     implementation(project(":common:base"))
-    compileOnly(project(":common:database"))
+    implementation(project(":common:database"))
 }

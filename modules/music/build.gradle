@@ -38,7 +38,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    compileOnly(project(":common:base"))
+    implementation(project(":common:base"))
     //https://github.com/google/ExoPlayer
     implementation("com.google.android.exoplayer:exoplayer-core:2.19.1")
 }
